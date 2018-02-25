@@ -16,20 +16,36 @@ function addToCart(itemName) {
  return cart;
 }
 
-function viewCart() {
-  if(cart.length !== 0) {
-    var items = [];
-    for (var i=0; i < cart.length; i++) {
-      for(var item in cart[i]) {
-        items.push(item + " at $" + cart[i][item])
-      }
-    }
-    console.log(`In your cart, you have ${items.join(", and ")  + "."} `)
+function viewCarted() {
+  if(!cart.length) {
+    console.log('Your shopping cart is empty.');
   }
   else {
-    return("Your shopping cart is empty");
+    var items = [];
+    // for loop to iterate over objects in cart
+    for(var i=0; i < cart.length; i++) {
+      // another for loop to iterate over the object's keys
+      for(var item in cart[i]) {
+        // adding the key and value into the items array
+        items.push(item + " at $" + cart[i][item]);
+      }
+    }
+    //  checking if items array length is equal to 2
+    // if it is, then it'll add an "and" after the first comma and finish the function
+    // if not then output will be: In your cart, you have banana at $77.
+    if(items.length == 2) {
+      console.log(`In your cart, you have ${items.join(" and ") + "."}`);
+    }
+    // otherwise if there is three or more items in the cart then these conditions will activate
+    else {
+          const mostItems = items.slice(0, -1);
+          const lastItem = items.slice(-1)[ 0 ];
+          console.log(`In your cart, you have ${mostItems.join(", ")} and ${lastItem}.`);
+
+      }
+    }
   }
-}
+
 
 function total() {
   if(cart.length !== 0) {
@@ -72,39 +88,6 @@ function placeOrder(cardNumber) {
     return cart;
   }
 }
-
-
-
-
-function viewCarted() {
-  if(!cart.length) {
-    console.log('Your shopping cart is empty.');
-  }
-  else {
-    var items = [];
-    // for loop to iterate over objects in cart
-    for(var i=0; i < cart.length; i++) {
-      // another for loop to iterate over the object's keys
-      for(var item in cart[i]) {
-        // adding the key and value into the items array
-        items.push(item + " at $" + cart[i][item]);
-      }
-    }
-    //  checking if items array length is equal to 2
-    // if it is, then it'll add an "and" after the first comma and finish the function
-    // if not then output will be: In your cart, you have banana at $77.
-    if(items.length == 2) {
-      console.log(`In your cart, you have ${items.join(" and ") + "."}`);
-    }
-    // otherwise if there is three or more items in the cart then these conditions will activate
-    else {
-          const mostItems = items.slice(0, -1);
-          const lastItem = items.slice(-1)[ 0 ];
-          console.log(`In your cart, you have ${mostItems.join(", ")} and ${lastItem}.`);
-
-      }
-    }
-  }
 
 
 addToCart("a");
