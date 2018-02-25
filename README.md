@@ -1,6 +1,6 @@
 # VanillaJS - Online-Shopping-Lab
 
-Practicing Object Oriented programming, arrays, conditionals, and loops by creating a shopping cart with various features
+Practising Object Oriented programming, arrays, conditionals, and loops by creating a shopping cart with various features
 using Vanilla JS.
 
 <strong> 1: addToCart() function </strong>
